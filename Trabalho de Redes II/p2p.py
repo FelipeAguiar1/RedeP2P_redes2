@@ -18,7 +18,7 @@ class Server(threading.Thread):
         print("Connection from %s\n" % str(address))     
         while 1:
             chunk=clientname.recv(4096)            
-            print(str(address)+':'+chunk)
+            print(str(address)+':'+chunk))
 
 class Client(threading.Thread):    
     def connect(self,host,port):
