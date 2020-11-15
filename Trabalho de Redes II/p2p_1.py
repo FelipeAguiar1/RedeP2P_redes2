@@ -17,14 +17,15 @@ class Server(threading.Thread):
         (clientname,address)=self.sock.accept()
         print("Connection from %s\n" % str(address))     
         while 1:
-            chunk=clientname.recv(4096)         
-            print(str(address)+':'+chunk)
+            chunk=clientname.recv(4096)
+            teste = str(address)
+            print(teste+':'+chunk)
 
 class Client(threading.Thread):    
     def connect(self,host,port):
         self.sock.connect((host,port))
     def client(self,host,port,msg):             
-        sent=self.sock.send(msg) 
+        sent=self.sock.sendall(msg.encode('utf-8')) 
         print("Sent\n")
     def run(self):
         self.sock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
